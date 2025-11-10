@@ -47,12 +47,28 @@ public class PhoneBook {
     public Boolean hasEntry(String name) {
         return phonebook.containsKey(name);
     }
+    
+    public Boolean hasEntry(String name, String phoneNumber) {
+        if (!phonebook.containsKey(name)) {
+            return false;
+    }
+    List<String> numbers = phonebook.get(name);
+    return numbers.contains(phoneNumber);
+    }
 
     public List<String> lookup(String name) {
         return phonebook.get(name);
     }
 
     public String reverseLookup(String phoneNumber)  {
+        for (Map.Entry<String, List<String>> entry : phonebook.entrySet()) {
+            String name = entry.getKey();
+            List<String> numbers = entry.getValue();
+
+            if (numbers.contains(phoneNumber)) {
+                return name;
+            }
+        }
         return null;
     }
 
