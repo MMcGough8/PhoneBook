@@ -41,6 +41,7 @@ public class PhoneBook {
     }
 
     public void remove(String name) {
+        phonebook.remove(name);
     }
 
     public Boolean hasEntry(String name) {
@@ -56,7 +57,7 @@ public class PhoneBook {
     }
 
     public List<String> getAllContactNames() {
-        return null;
+        return new ArrayList<>(phonebook.keySet());
     }
 
     public Map<String, List<String>> getMap() {
