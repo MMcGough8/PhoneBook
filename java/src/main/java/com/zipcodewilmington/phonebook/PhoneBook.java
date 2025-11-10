@@ -16,14 +16,22 @@ public class PhoneBook {
     private final Map<String, List<String>> phonebook;
 
     public PhoneBook(Map<String, List<String>> map) {
-        this.phonebook = null;
+        this.phonebook = map;
     }
 
     public PhoneBook() {
-        this(null);
+        this(new LinkedHashMap<>());
     }
 
     public void add(String name, String phoneNumber) {
+        if (phonebook.containsKey(name)) {
+            List<String> numbers = phonebook.get(name);
+            numbers.add(phoneNumber);
+        } else {
+            List<String> numbers = new ArrayList<>();
+            numbers.add(phoneNumber);
+            phonebook.put(name, numbers);
+        }
     }
 
     public void addAll(String name, String... phoneNumbers) {
