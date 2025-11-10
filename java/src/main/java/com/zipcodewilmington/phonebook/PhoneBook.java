@@ -35,17 +35,20 @@ public class PhoneBook {
     }
 
     public void addAll(String name, String... phoneNumbers) {
+        for (String phoneNumber : phoneNumbers) {
+            add(name, phoneNumber);
+        }
     }
 
     public void remove(String name) {
     }
 
     public Boolean hasEntry(String name) {
-        return null;
+        return phonebook.containsKey(name);
     }
 
     public List<String> lookup(String name) {
-        return null;
+        return phonebook.get(name);
     }
 
     public String reverseLookup(String phoneNumber)  {
